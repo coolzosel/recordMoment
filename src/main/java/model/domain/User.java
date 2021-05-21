@@ -24,7 +24,12 @@ public class User {
 	
 	private String email; // 이메일
 	
-	private String addr; //주소
+	private String addr1;
+	private String addr2;
+	private String addr3; // 주소
+	
+	
+//	private String addr = addr1 + " " + addr2 + " " + addr3; //주소
 	
 //	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL })
 //	private List<Board>	board = new ArrayList<>();

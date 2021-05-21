@@ -2158,6 +2158,12 @@ progress {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.form-post div{
+  width: 49%;  
+  margin: 0px 5px;
+  /* display: inline-block; */
+}
+
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     transition: none;
