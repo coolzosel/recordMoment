@@ -107,6 +107,6 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../../js/addr.js"></script>
-<script src="../../js/join.js"></script>
+<script src="../../js/login.js"></script>
 
 </html>
