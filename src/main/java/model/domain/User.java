@@ -18,7 +18,7 @@ public class User {
 	@Column(length=15)
 	private String id; //아이디(고유키)
 
-	private String pwd; // 패스워드
+	private String pw; // 패스워드
 	
 	private String name; // 이름
 	
