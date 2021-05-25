@@ -10,18 +10,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeonghwa.moment.model.dao.BoardRepository;
 import com.jeonghwa.moment.model.dao.UserRepository;
 
 import model.domain.User;
 
+@SessionAttributes({"user","id"})
 @Controller
 public class UserController {
 	
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private BoardRepository boardRepo;
 
 	@Autowired
 	private HttpSession session;
@@ -79,6 +84,8 @@ public class UserController {
 			if(userRepo.findById(id) != null && userRepo.findById(id).get().getPw().equals(pw)) {
 				session.setAttribute("id", id);
 				model.addAttribute("id", id);
+//				model.addAttribute("boardList", boardRepo.findAll());
+//				System.out.println("게시글리스트 - "+boardRepo.findAll());
 				System.out.println("로그인 성공");
 				mv.setViewName("board");
 			}else {

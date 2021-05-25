@@ -34,10 +34,7 @@ public class User {
 	private String addr3; // 주소
 	
 	
-//	private String addr = addr1 + " " + addr2 + " " + addr3; //주소
-	
-	@OneToMany
-	@JoinColumn(name="user_id")
+	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
 	private List<Board>	posts = new ArrayList<>();
 	
 	
