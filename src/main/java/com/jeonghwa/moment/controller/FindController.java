@@ -18,16 +18,14 @@ public class FindController {
 	
 	//아이디찾기
 	@RequestMapping("findId")
-	public ModelAndView findId(@RequestParam("email") String email, HttpSession session) {
+	public ModelAndView findId(@RequestParam("email") String email) {
 		
 		ModelAndView mv = new ModelAndView();
 		
 		try {
-			if(userRepo.findById(email) != null) {
+			if(email != null) {
 				
 				String id = userRepo.findById(email).get().getId();
-//				session.setAttribute("id", id);
-//				model.addAttribute("id", id);
 				mv.addObject("id", id);
 				mv.addObject("msg", email+"님의 아이디입니다.");
 				System.out.println("아이디 찾기 성공!");
@@ -43,5 +41,14 @@ public class FindController {
 		
 		return mv;
 	}
+	
+	
+	//비밀번호 찾기
+//	@RequestMapping("findPw")
+//	public ModelAndView findPw(@RequestParam("id") String id, @RequestParam("email") String email) {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		return mv;
+//	}
 
 }

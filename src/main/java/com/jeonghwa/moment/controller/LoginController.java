@@ -9,10 +9,10 @@ import com.jeonghwa.moment.model.dao.UserRepository;
 //@org.springframework.stereotype.Controller
 @Controller
 public class LoginController {
-	@Autowired
-	private UserRepository userRepo;
-	
-	
+//	@Autowired
+//	private UserRepository userRepo;
+//	
+//	
 	
 
 

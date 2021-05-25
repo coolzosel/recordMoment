@@ -1,8 +1,14 @@
 package model.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +17,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
 @Entity
 public class User {
 	@Id
@@ -31,11 +36,9 @@ public class User {
 	
 //	private String addr = addr1 + " " + addr2 + " " + addr3; //주소
 	
-//	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL })
-//	private List<Board>	board = new ArrayList<>();
-//	
-	// 리스트에 게시판글 담기
-	// 리스트에 담는거보단.. 테이블에 바로바로 추가해주는게 더 나을듯
+	@OneToMany
+	@JoinColumn(name="user_id")
+	private List<Board>	posts = new ArrayList<>();
 	
 	
 }

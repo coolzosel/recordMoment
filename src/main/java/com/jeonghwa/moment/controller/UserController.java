@@ -95,6 +95,16 @@ public class UserController {
 	}
 	
 	// 로그아웃 - 세션 날리기, 초기화
-	
+	@GetMapping("logout")
+	public ModelAndView logout(@ModelAttribute("id") String id, SessionStatus status, HttpSession session) {
+		System.out.println("로그아웃 성공");
+		ModelAndView mv = new ModelAndView();
+		System.out.println("세션: "+session.getAttribute("id")); // 세션: test1
+		status.setComplete();
+		session.removeAttribute("id");
+		System.out.println("세션: "+session.getAttribute("id")); // 세션: null
+		mv.setViewName("index");
+		return mv;
+	}
 	
 }
