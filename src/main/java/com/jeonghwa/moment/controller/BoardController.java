@@ -41,8 +41,21 @@ public class BoardController {
 	}
 	
 	// 글 수정
+//	@PostMapping("updateWrite")
+//	public ModelAndView updateWrite() {
+//		
+//	}
 	
 	// 글 삭제
+	@PostMapping("deleteWrite")
+	public ModelAndView deleteWrite(@RequestParam("id") String id, @RequestParam("title") String title) {
+		ModelAndView mv = new ModelAndView();
+		
+		User user = userRepo.findById(id).get();
+		List<Board> posts = new ArrayList<Board>();
+		
+		return mv;
+	}
 	
 	
 }

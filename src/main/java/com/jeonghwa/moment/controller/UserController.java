@@ -73,6 +73,12 @@ public class UserController {
 	
 	
 	//탈퇴
+//	@PostMapping("deleteUser")
+//	public ModelAndView deleteUser() {
+//		
+//	}
+	
+	
 	
 	// 로그잇 - 세션 겟, 
 	// 로그인	
@@ -115,3 +121,7 @@ public class UserController {
 	}
 	
 }
+
+	// 회원 탈퇴
+	
+

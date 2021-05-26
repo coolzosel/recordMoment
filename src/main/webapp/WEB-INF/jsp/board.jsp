@@ -23,26 +23,33 @@
         </div>
     </nav>
 
-
+    
     <div class="container mt-5">
-        <h2>게시판</h2>
-        <ul class="postlist">
-            <li class="postlist_item" id="head">
-                <span class="no">번호</span>
-                <span class="title">제목</span>
-                <span class="writer">작성자</span>
-                <span class="time">작성일</span>
-            </li>
-            <c:forEach items="${boardList}" var="item">
-                <li class="postlist_item">
-                    <span class="no">${item.no}</span>
-                    <span class="title">${item.title}</span>
-                    <span class="writer">${item.id.id}</span>
-                    <span class="time">${item.date}</span>
-                </li>
-            </c:forEach>
-        </ul>
-
+        <h2><a href="board">게시판</a></h2>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="no">번호</th>
+                <th scope="col" class="title">제목</th>
+                <th scope="col" class="writer">작성자</th>
+                <th scope="col" class="time">작성일</th>
+              </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${boardList}" var="item">
+                    <tr>
+                        <td class="no">${item.no}</td>
+                        <td class="title">
+                            <a href="">
+                                ${item.title}
+                            </a>
+                        </td>
+                        <td class="writer">${item.id.id}</td>
+                        <td class="time">${item.date}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
         <button type="button" onclick="location.href='writePage'">글쓰기</button>
 
     </div>

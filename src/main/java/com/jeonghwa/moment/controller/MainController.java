@@ -33,6 +33,11 @@ public class MainController {
 		return "findPw";
 	}
 	
+	@GetMapping("board")
+	public String board() { // 게시판 페이지
+		return "board";
+	}
+	
 	@GetMapping("writePage") // 게시글 작성 페이지
 	public String writePage() {
 		return "write";
