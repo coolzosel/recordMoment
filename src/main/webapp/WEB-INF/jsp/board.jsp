@@ -40,7 +40,7 @@
                     <tr>
                         <td class="no">${item.no}</td>
                         <td class="title">
-                            <a href="">
+                            <a href="/${item.no}">
                                 ${item.title}
                             </a>
                         </td>

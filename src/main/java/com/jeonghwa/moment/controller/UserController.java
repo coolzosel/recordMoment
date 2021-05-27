@@ -90,8 +90,7 @@ public class UserController {
 			if(userRepo.findById(id) != null && userRepo.findById(id).get().getPw().equals(pw)) {
 				session.setAttribute("id", id);
 				model.addAttribute("id", id);
-//				model.addAttribute("boardList", boardRepo.findAll());
-//				System.out.println("게시글리스트 - "+boardRepo.findAll());
+				mv.addObject("boardList", boardRepo.findAll());
 				System.out.println("로그인 성공");
 				mv.setViewName("board");
 			}else {

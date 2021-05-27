@@ -1,10 +1,20 @@
 package com.jeonghwa.moment.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.jeonghwa.moment.model.dao.BoardRepository;
+import com.jeonghwa.moment.model.dao.UserRepository;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private UserRepository userRepo;
+	@Autowired
+	private BoardRepository boardRepo;
 	
 //	@GetMapping("index") // 홈
 //	public String home() {
@@ -34,8 +44,12 @@ public class MainController {
 	}
 	
 	@GetMapping("board")
-	public String board() { // 게시판 페이지
-		return "board";
+	public ModelAndView board() { // 게시판 페이지
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardList", boardRepo.findAll());
+		mv.setViewName("board");
+		System.out.println("게시판목록으로 가기");
+		return mv;
 	}
 	
 	@GetMapping("writePage") // 게시글 작성 페이지

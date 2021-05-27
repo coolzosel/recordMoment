@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +41,16 @@ public class BoardController {
 		System.out.println("글 작성 완료"); 
 		return new ModelAndView("board", "boardList", boardRepo.findAll());
 	}
+	
+	// 글 조회
+	@GetMapping("/{no}")
+	public ModelAndView readPost(@PathVariable("no") Long no) {
+		Board read = boardRepo.findById(no).get();
+		ModelAndView mv = new ModelAndView("detailView");
+		mv.addObject("post", read);		
+		return mv;
+	}
+	
 	
 	// 글 수정
 //	@PostMapping("updateWrite")

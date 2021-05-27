@@ -11,8 +11,10 @@
 </head>
 <body>
 	<div class="container mt-5">
-        ${detailList.liked}-
-        ${detailList.title}-${dettail.text}
+        글번호 :  ${post.no} <br>
+        좋아요 수 : ${post.liked} <br>
+        제목 : ${post.title} <br>
+        내용 : ${post.content} <br>
     </div>
 	
     <button type="button" class="btn btn-primary btn-nm" onclick="">목록</button>
