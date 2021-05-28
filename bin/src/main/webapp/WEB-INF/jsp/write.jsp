@@ -32,7 +32,7 @@
 				</li>
 				<li>
 					<label for="post-content">내용</label> 
-					<input type="text" name="content" id="content" class="input--text">
+					<textarea name="content" id="content" class="input--text"></textarea>
 				</li>
 			</ul>
 		</form>

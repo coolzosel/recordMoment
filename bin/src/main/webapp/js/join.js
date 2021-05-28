@@ -4,6 +4,10 @@
 
 // 빈칸 체크
 function chkAll() {
+
+    var re = /^[0-9a-zA-Z]{10,}$/;
+    var re2 = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z]+)(\.[0-9a-zA-Z]+){1,2}$/;
+
     var id = document.getElementById('user-id');
     var pw = document.getElementById('user-password');
     var pw2 = document.getElementById('user-passwordchk');
@@ -12,46 +16,55 @@ function chkAll() {
     var addrcode = document.getElementById('postcode');
     var addr1 = document.getElementById('address');
     var addr2 = document.getElementById('detailAddress');
-    var agree = document.getElementById('agree');
+    var agree = document.join.agree.checked;
 
     if (id.value.trim() == '' || id.value == null){
-        alert("아이디를 입력하세요.");
+        alert("아이디를 입력하세요.");     
         return false;
-    }
 
-    if(pw.value.trim() == '' || pw.value == null){
+    } else if(id.value.length < 4){    	
+    	alert("아이디를 4자 이상 입력하세요.");
+    	return false;
+
+    } else if(pw.value.trim() == '' || pw.value == null){
         alert("비밀번호를 입력하세요.");
         return false;
-    }
-    
-    if(pw.value != pw2.value){
+
+    }else if(!re.test(pw.value)){
+        alert("비밀번호를 영문과 숫자를 조합해 10글자 이상 입력하세요.");
+        return false;
+
+    } else if(pw.value != pw2.value){
         alert("비밀번호가 일치하지 않습니다.");
         return false;
-    }
 
-    if(name.value.trim() == '' || name.value == null){
+    } else if(name.value.trim() == '' || name.value == null){
         alert("이름을 입력하세요.");
         return false;
-    }
-    
-    if(email.value.trim() == '' || email.value == null){
+
+    } else if(email.value.trim() == '' || email.value == null){
         alert("이메일을 입력하세요.");
         return false;
-    }
 
-    if(addrcode.value.trim() == '' || addrcode.value == null 
+    } else if(!re2.test(email.value)){
+        alert("이메일 양식에 맞게 올바르게 입력하세요.");
+        return false;
+
+    } else if(addrcode.value.trim() == '' || addrcode.value == null 
     || addr1.value.trim() == '' || addr1.value == null
     || addr2.value.trim() == '' || addr2.value == null){        
         alert("주소를 입력하세요.");        
         return false;
-    }
-    
-    if(pw.value == ''){
-        alert("이용약관에 동의하십시오.");
-        return false; // 이건 더 찾아보고 밸류값 유효성체크 알아보기
 
-    }
+    } else if(!agree){
+        alert("개인정보 이용약관에 동의하십시오.");
+        return false;
 
+    } else {
+        alert("가입성공!");
+        return document.join.submit();
+
+    }  
 }
 
 
@@ -71,4 +84,7 @@ pw,pw2.on('keyup', function() {
             }
     }
 });
+
+// 아이디 중복 체크
+
 

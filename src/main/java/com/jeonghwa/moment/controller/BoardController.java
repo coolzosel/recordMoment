@@ -43,20 +43,21 @@ public class BoardController {
 	}
 	
 	// 글 조회
-	@GetMapping("/{no}")
+	@GetMapping("/board/{no}")
 	public ModelAndView readPost(@PathVariable("no") Long no) {
-		Board read = boardRepo.findById(no).get();
+		Board post = boardRepo.findById(no).get();
 		ModelAndView mv = new ModelAndView("detailView");
-		mv.addObject("post", read);		
+		mv.addObject("post", post);		
 		return mv;
 	}
 	
-	
 	// 글 수정
-//	@PostMapping("updateWrite")
-//	public ModelAndView updateWrite() {
-//		
-//	}
+	@PostMapping("/update/{no}")
+	public ModelAndView updatePost(@PathVariable("no") Long no, Board board) {
+		System.out.println("글 수정 완료!");
+		Board
+		return mv;
+	}
 	
 	// 글 삭제
 	@PostMapping("deleteWrite")

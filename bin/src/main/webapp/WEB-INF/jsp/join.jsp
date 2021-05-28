@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>devTest</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../_vendor/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container">
-        <form action="join" method="POST" id="join-form">
+        <form action="join" method="POST" id="join-form" name="join">
             <fieldset>
 
                 <legend class="form-label mt-5 mb-4 text-center"><h2>회원가입</h2></legend>
@@ -37,13 +36,13 @@
                 <br>
 
                 <div class="form-floating mb-3">
-                    <input type="name" class="form-control" name="name" id="user-name" placeholder="이름">
+                    <input type="text" class="form-control" name="name" id="user-name" placeholder="이름">
                     <label for="floatingPassword">이름</label>
                 </div>
                 <br>
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" name="email" id="user-email" placeholder="user@example.com">
+                    <input type="text" class="form-control" name="email" id="user-email" placeholder="user@example.com">
                     <label for="floatingInput">이메일</label>
                 </div>
                 <br>
@@ -84,29 +83,29 @@
                         Reiciendis, inventore culpa repellendus excepturi atque fugit, laudantium molestiae corrupti aliquam incidunt nulla quod illum nisi laboriosam, nostrum mollitia. Obcaecati corporis doloribus illo ab, sint quaerat et facere dignissimos deserunt!
                     </div>
                     <label for="privacy-agree" class="form-label" style="float: right;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" id="agree">
+                        <input class="form-check-input" type="checkbox" id="agree">
                         이용약관 및 개인정보 처리방침에 동의합니다.
                     </label>
                 </div>
                 <br>
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-nm" onclick="chkAll()">가입하기</button>
-                    <button type="button" class="btn btn-primary btn-nm" onclick="location.href='/'">뒤로가기</button>
-
-                </div>
-
-
+                
+                
                 
             </fieldset>
-
-        
+            
+            
         </form>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary btn-nm" onclick="chkAll()">가입하기</button>
+            <button type="button" class="btn btn-primary btn-nm" onclick="location.href='/'">뒤로가기</button>
 
+        </div>
+        
     </div>
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../../js/addr.js"></script>
-<script src="../../js/login.js"></script>
+<script src="../../js/join.js"></script>
 
 </html>

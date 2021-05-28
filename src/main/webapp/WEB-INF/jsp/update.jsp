@@ -6,11 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>devTest-게시글작성</title>
+    <title>devTest-update</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
-</head>
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">devTest(logo)</a>
@@ -28,33 +26,17 @@
 			<ul>
 				<li>
 					<label for="post-title">제목</label> 
-					<input type="text" name="title" id="title" class="input--text">
+					<input type="text" name="title" id="title" class="input--text" value="${post.title}">
 				</li>
 				<li>
 					<label for="post-content">내용</label> 
-					<input type="text" name="content" id="content" class="input--text">
+					<input type="text" name="content" id="content" class="input--text" value="${post.content}">
 				</li>
 			</ul>
 		</form>
-		<button type="button" class="btn" onclick="writeChk()">작성</button>
+		<button type="button" class="btn" onclick="">수정</button>
 
 	</div>
 	
 </body>
-<script type="text/javascript">
-
-	// 빈 칸 체크
-	var title = document.getElementById("title");
-	var content = document.getElementById("content");
-
-	function writeChk(){
-		if(title.value.trim() == ''  || content.value.trim() == '' ) {
-			alert("내용을 입력하세요.");
-			return false;
-		}else {
-			return document.postWrite.submit();
-		}
-	}
-
-</script>
 </html>

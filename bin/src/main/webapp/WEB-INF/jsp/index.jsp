@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>devTest</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../_vendor/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
     <div class="text-center font1 mt-5">
@@ -17,20 +16,20 @@
         </a>
     </div>
 
-    <form action="login" method="POST" id="login-form">
+    <form action="login" method="POST" id="login-form" name="login">
         <fieldset>
             <div class="container text-center font2 mt-5">
                 <legend><h2>Login</h2></legend>
                 <div class="form-group">
                     <div class="form-floating mb-3">
-                      <input type="id" class="form-control" id="floatingInput" placeholder="id" name="id">
+                      <input type="id" class="form-control" id="id" placeholder="id" name="id">
                       <label for="floatingInput">아이디</label>
                     </div>
                     <div class="form-floating">
-                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                      <input type="password" class="form-control" id="pw" placeholder="Password" name="pw">
                       <label for="floatingPassword">비밀번호</label>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-nm" onclick="">로그인</button>
+                    <button type="button" class="btn btn-primary btn-nm" onclick="isNotnull()">로그인</button>
                     <button type="button" class="btn btn-primary btn-nm" onclick="location.href='joinPage'">회원가입</button>
                     <button type="button" class="btn btn-primary btn-nm" onclick="location.href='findIdPage'">아이디 찾기</button>
                     <button type="button" class="btn btn-primary btn-nm" onclick="location.href='findPwPage'">비밀번호 찾기</button>
@@ -40,16 +39,18 @@
     </form>
 
 </body>
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript">
     
-    function isNotnull(i) {
-        if(typeof i == "undefined" || i == null || i == "") { //빈칸 유효성 체크.. 다시 찾아보기 (태그선택자 )
-            return alert("빈 칸을 채워주십시오.");
+    // 로그인 빈 칸 체크
+    var id = document.getElementById("id");
+    var pw = document.getElementById("pw");
+
+    function isNotnull() {
+        if(id.value.trim() == '' || pw.value.trim() == '') { 
+            alert("빈 칸을 채워주세요.(공백은 적용되지 않습니다.)");
+            return false;
         }else {
-            return true;
+            return document.login.submit();
         }
     }
 

@@ -3,10 +3,13 @@ package com.jeonghwa.moment.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jeonghwa.moment.model.dao.BoardRepository;
 import com.jeonghwa.moment.model.dao.UserRepository;
+
+import model.domain.Board;
 
 @Controller
 public class MainController {
@@ -55,6 +58,15 @@ public class MainController {
 	@GetMapping("writePage") // 게시글 작성 페이지
 	public String writePage() {
 		return "write";
+	}
+	
+	@GetMapping("/update/{no}") // 게시글 수정 페이지
+	public ModelAndView updatePage(@PathVariable("no") Long no) {
+		System.out.println("수정 페이지로 이동");
+		Board post = boardRepo.findById(no).get();
+		ModelAndView mv = new ModelAndView("update");
+		mv.addObject("post", post);
+		return mv;
 	}
 	
 }
