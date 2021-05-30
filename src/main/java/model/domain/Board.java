@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Board {
 	@Id
-	@GeneratedValue(generator = "board_seq")
+	@GeneratedValue(generator = "board_seq")	
 	private Long no; 
 		
 	private String title; // 제목

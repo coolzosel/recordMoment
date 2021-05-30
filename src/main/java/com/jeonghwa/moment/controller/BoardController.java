@@ -1,9 +1,13 @@
 package com.jeonghwa.moment.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jeonghwa.moment.model.dao.BoardRepository;
 import com.jeonghwa.moment.model.dao.UserRepository;
+import com.jeonghwa.moment.service.BoardService;
 
 import model.domain.Board;
 import model.domain.User;
@@ -26,6 +31,10 @@ public class BoardController {
 	   private UserRepository userRepo;
 	   @Autowired
 	   private BoardRepository boardRepo;
+	   
+	   @Autowired
+	   private BoardService service;
+	   
 	
 	// 글 작성
 	@PostMapping("postWrite")
@@ -55,18 +64,51 @@ public class BoardController {
 	@PostMapping("/update/{no}")
 	public ModelAndView updatePost(@PathVariable("no") Long no, Board board) {
 		System.out.println("글 수정 완료!");
-		Board
+				
+		boardRepo.findById(no).map(oldBoard -> {
+			oldBoard.setTitle(board.getTitle());
+			oldBoard.setContent(board.getContent());
+			return boardRepo.save(oldBoard);
+		}).orElseGet(() -> {			
+			board.setNo(no);
+			return boardRepo.save(board);
+		});
+		
+		ModelAndView mv = new ModelAndView("board", "boardList", boardRepo.findAll());		
 		return mv;
+		
 	}
 	
 	// 글 삭제
-	@PostMapping("deleteWrite")
-	public ModelAndView deleteWrite(@RequestParam("id") String id, @RequestParam("title") String title) {
-		ModelAndView mv = new ModelAndView();
+//	@PostMapping("deleteWrite")
+//	public ModelAndView deleteWrite(@RequestParam("id") String id, @RequestParam("title") String title) {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		User user = userRepo.findById(id).get();
+//		List<Board> posts = new ArrayList<Board>();
+//		
+//		return mv;
+//	}
+	
+	// 글 검색
+	@GetMapping("/search")
+	public ModelAndView search(@RequestParam("keyword") String keyword, 
+			@PageableDefault(size=10, sort="no", direction=Sort.Direction.DESC) Pageable pageable) {
 		
-		User user = userRepo.findById(id).get();
-		List<Board> posts = new ArrayList<Board>();
+		System.out.println("검색: "+keyword);
+		ModelAndView mv = new ModelAndView("search");
+		List<Board> searchList = service.search(keyword, pageable);
+		mv.addObject("searchList", searchList);
+				
+		return mv;
 		
+	}
+	
+	// 페이징
+	@GetMapping("board")
+	public ModelAndView index(@PageableDefault(size=10, sort="no", 
+	direction=Sort.Direction.DESC) Pageable pageable) {
+		ModelAndView mv = new ModelAndView("board", "boardList", service.getBoardList(pageable));		
 		return mv;
 	}
 	

@@ -3,6 +3,9 @@ package com.jeonghwa.moment.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jeonghwa.moment.model.dao.BoardRepository;
 import com.jeonghwa.moment.model.dao.UserRepository;
+import com.jeonghwa.moment.service.BoardService;
 
 import model.domain.User;
 
@@ -27,7 +31,9 @@ public class UserController {
 	private UserRepository userRepo;
 	@Autowired
 	private BoardRepository boardRepo;
-
+	@Autowired
+	private BoardService service;
+	
 	@Autowired
 	private HttpSession session;
 
@@ -72,25 +78,18 @@ public class UserController {
 //	}
 	
 	
-	//탈퇴
-//	@PostMapping("deleteUser")
-//	public ModelAndView deleteUser() {
-//		
-//	}
-	
-	
-	
-	// 로그잇 - 세션 겟, 
 	// 로그인	
 	@RequestMapping("login")
-	public ModelAndView userLogin(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session) {
+	public ModelAndView userLogin(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session, @PageableDefault(size=10, sort="no", 
+			direction=Sort.Direction.DESC) Pageable pageable) {
 		ModelAndView mv = new ModelAndView();
 		
 		try {
 			if(userRepo.findById(id) != null && userRepo.findById(id).get().getPw().equals(pw)) {
 				session.setAttribute("id", id);
 				model.addAttribute("id", id);
-				mv.addObject("boardList", boardRepo.findAll());
+//				mv.addObject("boardList", boardRepo.findAll());
+				mv.addObject("boardList", service.getBoardList(pageable));
 				System.out.println("로그인 성공");
 				mv.setViewName("board");
 			}else {

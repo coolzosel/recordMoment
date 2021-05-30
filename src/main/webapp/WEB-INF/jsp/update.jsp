@@ -15,26 +15,34 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">${sessionScope.id}님 반갑습니다^0^*</li>
-                    <li class="nav-item"><a href="logout">로그아웃</a></li>
+                    <li class="nav-item"><a href="/logout">로그아웃</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
 	<div class="container">
 
-		<form action="postWrite" method="POST" id="write-form" class="mt-5" name="postWrite">
+		<form action="/update/${post.no}" method="POST" id="write-form" class="mt-5">
+			<input type="hidden" value="${post.no}" name="no">
+		
 			<ul>
 				<li>
 					<label for="post-title">제목</label> 
-					<input type="text" name="title" id="title" class="input--text" value="${post.title}">
+					<input type="text" name="title" id="title" value="${post.title}">
+				</li>
+				<li>
+					<label for="post-title">작성자</label> 
+					${post.id.id}
+					<%-- <input type="text" name="id" id="id" value="${post.id.id}" readonly="readonly"> --%>
 				</li>
 				<li>
 					<label for="post-content">내용</label> 
-					<input type="text" name="content" id="content" class="input--text" value="${post.content}">
+					<input type="text" name="content" id="content" value="${post.content}">
 				</li>
 			</ul>
+			<button type="submit" class="btn">저장</button>
 		</form>
-		<button type="button" class="btn" onclick="">수정</button>
 
 	</div>
 	

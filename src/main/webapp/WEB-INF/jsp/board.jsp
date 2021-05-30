@@ -13,7 +13,7 @@
     <!-- 네비 바 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">devTest(logo)</a>
+            <a class="navbar-brand" href="/board">devTest</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">${sessionScope.id}님 반갑습니다^0^*</li>
@@ -38,7 +38,7 @@
             <tbody>
                 <c:forEach items="${boardList}" var="item">
                     <tr>
-                        <td class="no">${item.no}</td>
+                        <th class="no">${item.no}</th>
                         <td class="title">
                             <a href="/board/${item.no}">
                                 ${item.title}
@@ -52,7 +52,14 @@
         </table>
         <button type="button" onclick="location.href='writePage'">글쓰기</button>
 
+		<form action="/search" method="GET">
+	  	  <div class="btn-group" role="group">
+	   		<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+	  	    <button class="btn btn-secondary">검색</button>
+	 	  </div>
+		</form>
     </div>
+    
 
 
 
