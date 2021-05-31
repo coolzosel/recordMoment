@@ -11,6 +11,7 @@ import com.jeonghwa.moment.model.dao.UserRepository;
 
 import model.domain.Board;
 
+
 @Controller
 public class MainController {
 	
