@@ -13,11 +13,11 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">devTest(logo)</a>
+            <a class="navbar-brand" href="/board">devTest</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">${sessionScope.id}님 반갑습니다^0^*</li>
-                    <li class="nav-item"><a href="logout">로그아웃</a></li>
+                    <li class="nav-item"><a href="/logout">로그아웃</a></li>
                 </ul>
             </div>
         </div>

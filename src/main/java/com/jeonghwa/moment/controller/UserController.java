@@ -3,6 +3,7 @@ package com.jeonghwa.moment.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -21,6 +22,7 @@ import com.jeonghwa.moment.model.dao.BoardRepository;
 import com.jeonghwa.moment.model.dao.UserRepository;
 import com.jeonghwa.moment.service.BoardService;
 
+import model.domain.Board;
 import model.domain.User;
 
 @SessionAttributes({"user","id"})
@@ -88,9 +90,20 @@ public class UserController {
 			if(userRepo.findById(id) != null && userRepo.findById(id).get().getPw().equals(pw)) {
 				session.setAttribute("id", id);
 				model.addAttribute("id", id);
-//				mv.addObject("boardList", boardRepo.findAll());
+				
+				Page<Board> blist = service.getBoardList(pageable);				
+				int pageNo = blist.getPageable().getPageNumber();
+				int totalPages = blist.getTotalPages(); 
+				int pageBlock = 3; 
+				int startBlockPage = ((pageNo)/pageBlock*pageBlock+1);
+				int endBlockPage = startBlockPage + pageBlock - 1;
+				endBlockPage = totalPages < endBlockPage ? totalPages : endBlockPage; 
+								
+				mv.addObject("startbp", startBlockPage);
+				mv.addObject("endbp", endBlockPage);
 				mv.addObject("boardList", service.getBoardList(pageable));
-				System.out.println("로그인 성공");
+
+				System.out.println("로그인 성공");				
 				mv.setViewName("board");
 			}else {
 				System.out.println("로그인 실패");
@@ -105,7 +118,7 @@ public class UserController {
 		return mv;
 	}
 	
-	// 로그아웃 - 세션 날리기, 초기화
+	// 로그아웃
 	@GetMapping("logout")
 	public ModelAndView logout(@ModelAttribute("id") String id, SessionStatus status, HttpSession session) {
 		System.out.println("로그아웃 성공");

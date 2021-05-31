@@ -11,8 +11,10 @@ import model.domain.Board;
 public interface BoardRepository extends CrudRepository<Board, Long> {
 	
 //	List<Board> findByTitleContaining(String keyword);	
-	List<Board> findByTitleContaining(String keyword, Pageable pageable);	
+//	List<Board> findByTitleContaining(String keyword, Pageable pageable);
+	
 		
 	Page<Board> findAll(Pageable pageable);
+	Page<Board> findByTitleContaining(String keyword, Pageable pageable);
 	
 }

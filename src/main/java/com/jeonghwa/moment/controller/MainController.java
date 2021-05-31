@@ -46,15 +46,6 @@ public class MainController {
 		return "findPw";
 	}
 	
-//	@GetMapping("board")
-//	public ModelAndView board() { // 게시판 페이지
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("boardList", boardRepo.findAll());
-//		mv.setViewName("board");
-//		System.out.println("게시판목록으로 가기");
-//		return mv;
-//	}
-	
 	@GetMapping("writePage") // 게시글 작성 페이지
 	public String writePage() {
 		return "write";

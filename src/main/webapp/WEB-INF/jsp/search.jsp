@@ -13,7 +13,7 @@
     <!-- 네비 바 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/board">devTest)</a>
+            <a class="navbar-brand" href="/board">devTest</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">${sessionScope.id}님 반갑습니다^0^*</li>
@@ -24,7 +24,7 @@
     </nav>
     
     <div class="container mt-5">
-    	<h2><a href="board">게시판</a></h2>
+    	<h2><a href="/board">게시판</a></h2>
 	    <table class="table table-hover">
 		    <thead>
 			    <tr>
@@ -34,7 +34,7 @@
 			        <th scope="col" class="time">작성시간</th>
 			    </tr>
 		    </thead>
-		    <c:forEach items="${searchList}" var="item">
+		    <c:forEach items="${boardList.content}" var="item">
 		        <tbody>
 		        <tr>
 		            <th scope="row">${item.no}</th>
@@ -45,6 +45,38 @@
 		        </tbody>
 		    </c:forEach>
 		</table>
+
+		<div>
+            <ul class="pagination pagination-sm">
+                <c:choose>
+                    <c:when test="${boardList.first}"></c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a class="page-link" href="/board/?keyword=${param.keyword}&page=0">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="/board/?keyword=${param.keyword}&page=${boardList.number-1}">&larr;</a></li>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:forEach begin="${startbp}" end="${endbp}" var="item">
+                    <c:choose>
+                        <c:when test="${boardList.pageable.pageNumber+1 == item}">
+                            <li class="page-item active"><a class="page-link" href="/board/?keyword=${param.keyword}&page=${item-1}">${item}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a class="page-link" href="/board/?keyword=${param.keyword}&page=${item-1}">${item}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                               
+                <c:choose>
+                    <c:when test="${boardList.last}"></c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a class="page-link" href="/board/?keyword=${param.keyword}&page+1">&rarr;</a></li>
+                        <li class="page-item"><a class="page-link" href="/board/?page=${boardList.totalPages-1}">&raquo;</a></li>
+                    </c:otherwise>
+                </c:choose>
+              </ul>
+        </div>
+
 		<button type="button" onclick="location.href='/board'">전체목록</button>
 		
 		<form action="/search" method="GET">

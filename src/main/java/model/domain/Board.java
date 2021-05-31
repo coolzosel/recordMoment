@@ -35,8 +35,6 @@ public class Board {
 	private User id; // 작성자 
 			
 	private String date; //작성날짜
-			
-	private int liked; // 좋아요
 	
 	@PrePersist
     public void date() {

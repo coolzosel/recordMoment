@@ -19,10 +19,10 @@ public class BoardService {
 	private BoardRepository boardRepo;
 	
 	// 검색
-	public List<Board> search(String keyword, Pageable pageable){		
-		List<Board> boardList = boardRepo.findByTitleContaining(keyword, pageable);		
-		return boardList;
-	}
+//	public List<Board> search(String keyword, Pageable pageable){		
+//		List<Board> boardList = boardRepo.findByTitleContaining(keyword, pageable);		
+//		return boardList;
+//	}
 	
 	// 페이징	
 	public Page<Board> getBoardList(Pageable pageable){
