@@ -1,5 +1,8 @@
 package com.jeonghwa.moment.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,31 +58,28 @@ public class UserController {
 	}
 	
 	
-	//아이디 중복체크
-//	@PostMapping("idChk2")
-//	public String idChk2(@RequestParam String id) {
+//	//아이디 중복체크
+//	@PostMapping("idChk")
+//	public ModelAndView idChk(@RequestParam("id") String id) {
+//		ModelAndView mv = new ModelAndView();
 //		try {
 //			if (userRepo.existsById(id)) {
+//				mv.setViewName("error");
 //				session.setAttribute("msg", "이미 존재하는 아이디입니다. 다시 시도해주세요!");
-//				return "redirect:msg.html";
+//				return mv;
 //			} else {
+//				mv.setViewName("error");
 //				session.setAttribute("msg", "사용 가능한 아이디입니다.");				
 //			}			
 //		} catch (Exception e) {
 //			e.printStackTrace();
-//			return new ModelAndView("index");
-//		}		
-//	}
+//			mv.setViewName("index");
+//			return mv;
+//		}
+//		return mv;
+//	} 
 	
-	//아이디 중복 체크
-//	@GetMapping("idChk")
-//	public ModelAndView idChk(@ModelAttribute("id") String id, SessionStatus status, HttpSession session) {
-//		System.out.println("중복체크 확인");
-//		ModelAndView mv = new ModelAndView();
-//		System.out.println("세션-"+session.getAttribute("id"));
-//		
-//		
-//	}
+
 	
 	
 	// 로그인	
@@ -133,6 +135,5 @@ public class UserController {
 	
 }
 
-	// 회원 탈퇴
 	
 

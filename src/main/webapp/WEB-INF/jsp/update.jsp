@@ -11,7 +11,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">devTest(logo)</a>
+            <a class="navbar-brand" href="/board">devTest</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">${sessionScope.id}님 반갑습니다^0^*</li>
@@ -27,21 +27,26 @@
 			<input type="hidden" value="${post.no}" name="no">
 		
 			<ul>
+				<li><h2>No.${post.no}</h2></li>
 				<li>
-					<label for="post-title">제목</label> 
-					<input type="text" name="title" id="title" value="${post.title}">
+					<label for="post-title">작성자: </label>
+					${post.id.id}
 				</li>
 				<li>
-					<label for="post-title">작성자</label> 
-					${post.id.id}
-					<%-- <input type="text" name="id" id="id" value="${post.id.id}" readonly="readonly"> --%>
+					<label for="post-title">작성일: </label>
+					${post.date}
+				</li>
+				<li>
+					<label for="post-title">제목</label> 
+					<input type="text" name="title" id="title" value="${post.title}" class="form-control">
 				</li>
 				<li>
 					<label for="post-content">내용</label> 
-					<input type="text" name="content" id="content" value="${post.content}">
+					<input type="text" name="content" id="content" value="${post.content}" class="form-control" style="height:300px">
 				</li>
 			</ul>
-			<button type="submit" class="btn">저장</button>
+			<button type="button" class="btn btn-primary btn-nm" onclick="location.href='/board'">목록</button>
+			<button type="submit" class="btn btn-nm">저장</button>
 		</form>
 
 	</div>

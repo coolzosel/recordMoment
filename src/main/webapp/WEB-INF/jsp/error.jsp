@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
-	${msg}
-	${id}
+    <div class="=container mt-5 text-center">
+        <h1>Error!</h1>
+        <h3>${msg}</h3>
+    </div>
 </body>
 </html>

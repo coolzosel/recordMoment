@@ -28,15 +28,16 @@
 			<ul>
 				<li>
 					<label for="post-title">제목</label> 
-					<input type="text" name="title" id="title" class="input--text">
+					<input type="text" name="title" id="title" class="input--text form-control">
 				</li>
 				<li>
 					<label for="post-content">내용</label> 
-					<input type="text" name="content" id="content" class="input--text">
+					<input type="text" name="content" id="content" class="input--text form-control" style="height:300px">
 				</li>
 			</ul>
 		</form>
-		<button type="button" class="btn" onclick="writeChk()">작성</button>
+		<button type="button" class="btn btn-primary btn-nm" onclick="location.href='/board'">목록</button>
+		<button type="button" class="btn btn-nm" onclick="writeChk()">작성</button>
 
 	</div>
 	

@@ -77,12 +77,12 @@
               </ul>
         </div>
 
-		<button type="button" onclick="location.href='/board'">전체목록</button>
+		<button type="button" onclick="location.href='/board'" class="btn btn-nm">전체목록</button>
 		
 		<form action="/search" method="GET">
 	  	  <div class="btn-group" role="group">
-	   		<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-	  	    <button class="btn btn-secondary">검색</button>
+	   		<input name="keyword" type="text" placeholder="검색어를 입력해주세요" class=>
+	  	    <button class="btn">검색</button>
 	 	  </div>
 		</form>
 		

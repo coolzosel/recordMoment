@@ -19,7 +19,7 @@
                     <input type="text" class="form-control" name="id" id="user-id" placeholder="아이디">
                     <label for="floatingInput">아이디</label>
                     <small class="form-text">4자 이상 입력하세요.</small><br>
-                    <input type="button" onclick="" value="아이디확인" class="btn btn-primary btn-nm">
+                    <input type="button" onclick="/idChk" value="아이디확인" class="btn btn-primary btn-nm">
                 </div>
                 <br>
 

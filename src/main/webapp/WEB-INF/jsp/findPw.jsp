@@ -10,5 +10,19 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
-    비밀번호 찾기
+    <div class="container">
+        <form action="findPw" method="POST" name="findId">
+            <legend class="form-label mt-5 mb-4 text-center"><h2>비밀번호 찾기</h2></legend>
+            <div class="form-floating">
+                <input type="text" class="form-control" name="email" id="email" placeholder="이메일">
+                <label for="floatingInput">이메일</label>
+                <small class="form-text">가입 시 입력한 이메일을 입력하세요.</small><br>
+                <button type="button" onclick="location.href='/'" class="btn btn-primary btn-nm">로그인 화면으로</button>
+                <button type="button" onclick="" class="btn btn-primary btn-nm">비밀번호 찾기</button>
+            </div>
+            
+
+        </form>
+        
+    </div>
 </body>

@@ -18,6 +18,7 @@
                 <input type="text" class="form-control" name="email" id="email" placeholder="이메일">
                 <label for="floatingInput">이메일</label>
                 <small class="form-text">가입 시 입력한 이메일을 입력하세요.</small><br>
+                <button type="button" onclick="location.href='/'" class="btn btn-primary btn-nm">로그인 화면으로</button>
                 <button type="button" onclick="idChk()" class="btn btn-primary btn-nm">아이디 찾기</button>
             </div>
             
@@ -28,8 +29,8 @@
     
 </body>
 <script type="text/javascript">
-    // 빈 값 체크 후 submit하는 함수만들기 -> 계정없으면 없다고 error 메세지! 있으면 아이디 출력
-    // 모달로 띄울 지 새창으로 띄울 지 고민
+    
+    // 빈 값 체크
     var email = document.getElementById("email");
     var re = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z]+)(\.[0-9a-zA-Z]+){1,2}$/;
 

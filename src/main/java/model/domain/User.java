@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-public class User {
+public class User { 
 	@Id
 	@Column(length=15)
 	private String id; //아이디(고유키)
@@ -32,7 +32,7 @@ public class User {
 	private String addr1;
 	private String addr2;
 	private String addr3; // 주소
-	
+		
 	
 	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
 	private List<Board>	posts = new ArrayList<>();

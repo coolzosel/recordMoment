@@ -1,11 +1,8 @@
 package com.jeonghwa.moment.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,13 +14,13 @@ public class FindController {
    private UserRepository userRepo;
 	
 	//아이디찾기
-	@RequestMapping("findId")
+	@PostMapping("findId")
 	public ModelAndView findId(@RequestParam("email") String email) {
 		
 		ModelAndView mv = new ModelAndView();
 		
 		try {
-			if(email != null) {
+			if(userRepo.findById("email").get().getEmail() != null) {
 				
 				String id = userRepo.findById(email).get().getId();
 				mv.addObject("id", id);
@@ -34,6 +31,7 @@ public class FindController {
 			
 		} catch (Exception e) {
 			System.out.println("계정 없음");
+			System.out.println(email+userRepo.findById(email).get().getEmail());
 			mv.addObject("msg", "입력한 이메일이 존재하지 않습니다.");
 			mv.setViewName("error");
 			

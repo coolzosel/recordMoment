@@ -82,7 +82,7 @@
               </ul>
         </div>
 
-        <button type="button" onclick="location.href='/writePage'">글쓰기</button>
+        <button type="button" onclick="location.href='/writePage'" class ="btn btn-nm">글쓰기</button>
 
 		<form action="/search" method="GET">
             <div class="btn-group" role="group">
