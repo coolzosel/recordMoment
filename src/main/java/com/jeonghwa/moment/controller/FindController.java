@@ -17,21 +17,21 @@ public class FindController {
 	@PostMapping("findId")
 	public ModelAndView findId(@RequestParam("email") String email) {
 		
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("error");
+		
 		
 		try {
-			if(userRepo.findById("email").get().getEmail() != null) {
+			if(userRepo.findByEmail(email) != null) {
 				
-				String id = userRepo.findById(email).get().getId();
+				String id = userRepo.findByEmail(email).get().getId();
 				mv.addObject("id", id);
 				mv.addObject("msg", email+"님의 아이디입니다.");
-				System.out.println("아이디 찾기 성공!");
-				mv.setViewName("error");
+				System.out.println("아이디 찾기 성공!"+id);
+				mv.setViewName("findView");
 			}
 			
 		} catch (Exception e) {
-			System.out.println("계정 없음");
-			System.out.println(email+userRepo.findById(email).get().getEmail());
+			System.out.println("계정 없음"+email);
 			mv.addObject("msg", "입력한 이메일이 존재하지 않습니다.");
 			mv.setViewName("error");
 			

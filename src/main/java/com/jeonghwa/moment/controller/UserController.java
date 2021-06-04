@@ -1,8 +1,5 @@
 package com.jeonghwa.moment.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,31 +52,8 @@ public class UserController {
 		mv.setViewName("index"); // 가입 후 홈으로 이동
 		
 		return mv;
-	}
+	}	
 	
-	
-//	//아이디 중복체크
-//	@PostMapping("idChk")
-//	public ModelAndView idChk(@RequestParam("id") String id) {
-//		ModelAndView mv = new ModelAndView();
-//		try {
-//			if (userRepo.existsById(id)) {
-//				mv.setViewName("error");
-//				session.setAttribute("msg", "이미 존재하는 아이디입니다. 다시 시도해주세요!");
-//				return mv;
-//			} else {
-//				mv.setViewName("error");
-//				session.setAttribute("msg", "사용 가능한 아이디입니다.");				
-//			}			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			mv.setViewName("index");
-//			return mv;
-//		}
-//		return mv;
-//	} 
-	
-
 	
 	
 	// 로그인	
@@ -132,6 +106,33 @@ public class UserController {
 		mv.setViewName("index");
 		return mv;
 	}
+	
+	
+	// 아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value="idCheck", produces="text/plain")
+	public String idCheck(@RequestBody String id) {
+		
+				
+		System.out.println(id);
+		try {
+			if(userRepo.findById(id) != null) {
+				return "-1";
+				
+			}else {
+				System.out.println("아이디 null");
+				return "0";
+			}
+			
+			
+		}catch(Exception e){
+			
+			return "-1";		
+			
+		}
+				
+	} // 중복체크 좀 더 손보기..
+	
 	
 }
 

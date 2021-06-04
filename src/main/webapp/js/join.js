@@ -61,7 +61,7 @@ function chkAll() {
         return false;
 
     } else {
-        alert("가입성공!");
+        // alert("가입성공!");
         return document.join.submit();
 
     }  
@@ -87,4 +87,29 @@ pw,pw2.on('keyup', function() {
 
 // 아이디 중복 체크
 
+function idChk() {
+    id = $("#user-id").val();
+
+    $.ajax({
+        url: 'idCheck',
+        type: 'POST',
+        dataType: 'text', // 서버로부터 내가 받는 데이터 타입
+        contentType: 'text/plain; charset=utf-8;', // 내가 서보로 보내는 데이터 타입
+        data: id,
+
+        success: function(data){
+            if(data == "0"){
+                console.log("아이디 없음");
+                alert('사용 가능한 아이디입니다.');
+            }else{
+                console.log("아이디 있음");                
+                alert("이미 존재하는 아이디입니다!"+typeof(data));
+            }
+        },
+        error:function(){            
+            alert("아이디를 입력하세요.");
+        }
+
+    });
+}
 
