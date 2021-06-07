@@ -98,12 +98,12 @@ function idChk() {
         data: id,
 
         success: function(data){
-            if(data == "0"){
+            if(data == 0){
                 console.log("아이디 없음");
                 alert('사용 가능한 아이디입니다.');
             }else{
                 console.log("아이디 있음");                
-                alert("이미 존재하는 아이디입니다!"+typeof(data));
+                alert("이미 존재하는 아이디입니다!");
             }
         },
         error:function(){            
