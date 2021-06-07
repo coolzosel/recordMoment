@@ -112,26 +112,24 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="idCheck", produces="text/plain")
 	public String idCheck(@RequestBody String id) {
-		
-				
-		System.out.println(id);
-		try {
-			if(userRepo.findById(id) != null) {
-				return "-1";
-				
-			}else {
-				System.out.println("아이디 null");
-				return "0";
-			}
+					
+		try {			
+//			if(userRepo.existsById(id) == true) {	// 아이디 존재 유무 체크				
+//				return "-1";//				
+//			}else {
+//				return "0";
+//			}			
 			
+			//리팩토링	
+			String val = userRepo.existsById(id) == true ? "-1" : "0";			
+			return val;					
 			
 		}catch(Exception e){
 			
 			return "-1";		
 			
-		}
-				
-	} // 중복체크 좀 더 손보기..
+		}				
+	} 
 	
 	
 }
